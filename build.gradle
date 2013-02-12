@@ -20,7 +20,7 @@ ext {
   jaxbVersion="2.2.7"
   servletVersion="3.0.1"
 
-  tomcatVersion="7.0.34"
+  tomcatVersion="7.0.35"
 }
 
 buildscript {

@@ -1,5 +1,3 @@
-
-
     drop table Category if exists;
 
     drop table CategoryPolicyRuleMapping if exists;
@@ -68,7 +66,7 @@
         startDate date,
         transactionDate timestamp,
         vendor varchar(255),
-        categoryId bigint,
+        categoryId bigint not null,
         primary key (id)
     );
 
