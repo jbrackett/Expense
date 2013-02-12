@@ -15,7 +15,7 @@ import com.expense.domain.policy.MaximumAmountPolicyRule;
 @DiscriminatorValue(CategoryType.STANDARD)
 public class StandardCategory extends Category {
 
-  public static final List<PolicyRule<? extends Object>> STANDARD_RULES = new ArrayList<>();
+  public static final List<PolicyRule<?>> STANDARD_RULES = new ArrayList<>();
 
   static {
     STANDARD_RULES.add(new MaximumAmountPolicyRule());
