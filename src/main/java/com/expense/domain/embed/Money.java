@@ -103,7 +103,7 @@ public class Money implements Comparable<Money> {
           + " does not match " + currency.getCurrencyCode());
     }
     BigDecimal newAmount = amount.multiply(conversion.getRate()).setScale(
-        to.getDefaultFractionDigits());
+        to.getDefaultFractionDigits(), RoundingMode.HALF_UP);
     return new Money(newAmount, to);
   }
 
