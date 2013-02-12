@@ -50,7 +50,9 @@ dependencies {
   compile "org.springframework:spring-tx:$springVersion"
   compile "org.springframework:spring-web:$springVersion"
   compile "org.springframework:spring-webmvc:$springVersion"
+  
   compile "org.springframework.data:spring-data-jpa:$springDataJpaVersion"
+  compile "org.springframework.data:spring-data-envers:0.1.0.RELEASE"
 
   compile "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
   compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
