@@ -32,7 +32,7 @@ public class StandardCategory extends Category {
   }
 
   @Override
-  public List<PolicyRule<? extends Object>> getAvailablePolicyRules() {
+  public List<PolicyRule<?>> getAvailablePolicyRules() {
     return StandardCategory.STANDARD_RULES;
   }
 
