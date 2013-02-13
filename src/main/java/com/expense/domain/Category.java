@@ -19,7 +19,16 @@ import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
 
+import com.expense.domain.category.AirCategory;
+import com.expense.domain.category.CarCategory;
+import com.expense.domain.category.LodgingCategory;
+import com.expense.domain.category.StandardCategory;
+import com.expense.domain.category.TelecomCategory;
+import com.expense.domain.constants.CategoryType;
 import com.expense.domain.constants.StopType;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
@@ -27,6 +36,12 @@ import com.google.common.collect.Multimap;
 @Table
 @Audited
 @DiscriminatorColumn(name = "categoryType", length = 20)
+@JsonTypeInfo(property = "categoryType", use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, defaultImpl = StandardCategory.class)
+@JsonSubTypes({ @Type(name = CategoryType.AIR, value = AirCategory.class),
+    @Type(name = CategoryType.CAR, value = CarCategory.class),
+    @Type(name = CategoryType.LODGING, value = LodgingCategory.class),
+    @Type(name = CategoryType.STANDARD, value = StandardCategory.class),
+    @Type(name = CategoryType.TELECOM, value = TelecomCategory.class) })
 public abstract class Category {
 
   @Id

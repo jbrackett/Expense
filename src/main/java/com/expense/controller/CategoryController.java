@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.expense.domain.Category;
+import com.expense.domain.constants.CategoryType;
 import com.expense.repository.CategoryRepository;
 
 @Controller
@@ -20,6 +21,12 @@ public class CategoryController {
   @Autowired
   public CategoryController(CategoryRepository categoryRepository) {
     this.categoryRepository = categoryRepository;
+  }
+
+  @RequestMapping(value = "/types")
+  @ResponseBody
+  public Iterable<String> getCategoryTypes() {
+    return CategoryType.getTypes();
   }
 
   @RequestMapping(method = RequestMethod.GET)
