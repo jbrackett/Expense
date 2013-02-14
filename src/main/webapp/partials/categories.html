@@ -2,7 +2,7 @@
   <form ng-submit="addCategory()">
     <fieldset>
       <legend>New Category</legend>
-      <input type="text" ng-model="newCategory.name" placeholder="Category name">
+      <input type="text" ng-model="newCategory.name" placeholder="Category name" autofocus>
       <select ng-model="newCategory.categoryType">
         <option ng-repeat="type in types">{{type}}</option>
       </select>
@@ -15,13 +15,30 @@
         <th>ID</th>
         <th>Name</th>
         <th>Type</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="category in categories">
         <td>{{category.id}}</td>
-        <td>{{category.name}}</td>
-        <td>{{category.categoryType}}</td>
+        <td ng-dblclick="editCategory(category)" ng-class="{editing: category == editedCategory}">
+          <div class="view">{{category.name}}</div>
+          <form class="edit" ng-submit="doneEditing(category)">
+            <input ng-model="category.name">
+          </form>
+        </td>
+        <td>
+          <div class="view">{{category.categoryType}}</div>
+        </td>
+        <td>
+          <span ng-class="{editing: category == editedCategory}">
+            <span class="edit">
+              <button type="button" class="btn btn-mini btn-success" ng-click=doneEditing(category)>Save</button>
+              <button type="button" class="btn btn-mini btn-danger" ng-click=cancelEditing(category)>Cancel</button>
+            </span>
+          </span>
+          <button type="button" class="close" ng-click="deleteCategory(category)">&times;</button>
+        </td>
       </tr>
     </tbody>
   </table>

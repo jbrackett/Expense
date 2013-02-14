@@ -36,7 +36,7 @@ import com.google.common.collect.Multimap;
 @Table
 @Audited
 @DiscriminatorColumn(name = "categoryType", length = 20)
-@JsonTypeInfo(property = "categoryType", use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, defaultImpl = StandardCategory.class)
+@JsonTypeInfo(property = "categoryType", use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
 @JsonSubTypes({ @Type(name = CategoryType.AIR, value = AirCategory.class),
     @Type(name = CategoryType.CAR, value = CarCategory.class),
     @Type(name = CategoryType.LODGING, value = LodgingCategory.class),
@@ -75,6 +75,10 @@ public abstract class Category {
     this.name = name;
   }
 
+  public String getCategoryType() {
+    return this.categoryType;
+  }
+
   public List<PolicyRule<?>> getPolicyRules() {
     return policyRules;
   }
@@ -106,8 +110,6 @@ public abstract class Category {
     }
     return messageMap.asMap();
   }
-
-  public abstract String getCategoryType();
 
   public abstract List<PolicyRule<?>> getAvailablePolicyRules();
 

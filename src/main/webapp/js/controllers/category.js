@@ -19,6 +19,30 @@ function CategoryCtrl($scope, $http) {
     policyRules: []
   };
   
+  $scope.editedCategory = null;
+  
+  $scope.editCategory = function(category) {
+    $scope.editedCategory = category;
+  }
+  
+  $scope.doneEditing = function(category) {
+    $scope.editedCategory = null;
+    $http.put("/Expense/category", category);
+  };
+  
+  $scope.cancelEditing = function(category) {
+    $scope.editedCategory = null;
+    $http.get("/Expense/category/" + category.id).success(function(data) {
+     categories.splice(categories.indexOf(category), 1, data);
+    });
+  }
+  
+  $scope.deleteCategory = function(category) {
+    $http.delete('/Expense/category/' + category.id).success(function() {
+      categories.splice(categories.indexOf(category), 1);
+    });
+  }
+  
   $scope.addCategory = function() {
    if (!$scope.newCategory.name.length) {
      return;

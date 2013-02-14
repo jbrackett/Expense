@@ -15,12 +15,7 @@ public class AirCategory extends Category {
 
   public AirCategory() {
     super();
-    categoryType = getCategoryType();
-  }
-
-  @Override
-  public String getCategoryType() {
-    return CategoryType.AIR;
+    categoryType = CategoryType.AIR;
   }
 
   @Override

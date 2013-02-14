@@ -54,15 +54,17 @@ dependencies {
   compile "org.springframework.data:spring-data-jpa:$springDataJpaVersion"
   compile "org.springframework.data:spring-data-envers:0.1.0.RELEASE"
 
-  compile "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
-  compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+  compile "com.fasterxml.jackson.core:jackson-core:2.1.3"
+  compile "com.fasterxml.jackson.core:jackson-databind:2.1.3"
   compile "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
+  compile "com.fasterxml.jackson.datatype:jackson-datatype-joda:$jacksonVersion"
   compile "javax.xml.bind:jaxb-api:$jaxbVersion"
 
   compile "org.apache.commons:commons-lang3:3.1"
   compile "com.google.guava:guava:13.0.1"
 
   compile "joda-time:joda-time:2.1"
+  
   compile "org.jadira.usertype:usertype.core:3.0.0.GA"
 
   runtime "cglib:cglib:2.2.2"

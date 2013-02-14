@@ -1,0 +1,24 @@
+.editing {
+	border-bottom: none;
+	padding: 0;
+}
+
+.editing .edit {
+	display: block;
+}
+
+.editing .view {
+	display: none;
+}
+
+.editing:last-child {
+	margin-bottom: -1px;
+}
+
+.edit {
+	display: none;
+}
+
+.hidden {
+	display:none;
+}

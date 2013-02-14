@@ -23,12 +23,7 @@ public class StandardCategory extends Category {
 
   public StandardCategory() {
     super();
-    categoryType = getCategoryType();
-  }
-
-  @Override
-  public String getCategoryType() {
-    return CategoryType.STANDARD;
+    categoryType = CategoryType.STANDARD;
   }
 
   @Override

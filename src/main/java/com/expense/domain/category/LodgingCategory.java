@@ -15,12 +15,7 @@ public class LodgingCategory extends Category {
 
   public LodgingCategory() {
     super();
-    categoryType = getCategoryType();
-  }
-
-  @Override
-  public String getCategoryType() {
-    return CategoryType.LODGING;
+    categoryType = CategoryType.LODGING;
   }
 
   @Override

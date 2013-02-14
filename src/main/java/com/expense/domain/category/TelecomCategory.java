@@ -15,12 +15,7 @@ public class TelecomCategory extends Category {
 
   public TelecomCategory() {
     super();
-    categoryType = getCategoryType();
-  }
-
-  @Override
-  public String getCategoryType() {
-    return CategoryType.TELECOM;
+    categoryType = CategoryType.TELECOM;
   }
 
   @Override

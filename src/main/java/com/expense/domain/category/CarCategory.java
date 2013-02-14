@@ -15,12 +15,7 @@ public class CarCategory extends Category {
 
   public CarCategory() {
     super();
-    categoryType = getCategoryType();
-  }
-
-  @Override
-  public String getCategoryType() {
-    return CategoryType.CAR;
+    categoryType = CategoryType.CAR;
   }
 
   @Override

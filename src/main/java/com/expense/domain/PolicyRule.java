@@ -16,12 +16,17 @@ import org.hibernate.envers.Audited;
 import org.joda.time.LocalDate;
 
 import com.expense.domain.constants.StopType;
+import com.expense.domain.policy.MaximumAmountPolicyRule;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Table
 @Entity
 @Audited
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "name")
+@JsonTypeInfo(property = "name", use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+@JsonSubTypes({ @JsonSubTypes.Type(name = MaximumAmountPolicyRule.POLICY_NAME, value = MaximumAmountPolicyRule.class) })
 public abstract class PolicyRule<T> {
 
   @Id
