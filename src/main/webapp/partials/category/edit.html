@@ -1,7 +1,4 @@
-<div class="alert alert-success" ng-show="message">
-  <button type="button" class="close" ng-click="closeMessage()">&times;</button>
-  <strong>{{messageType}}</strong> {{message}}
-</div>
+<div ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" alert>{{alert.msg}}</div>
 <form class="form-horizontal" ng-submit="editCategory()">
   <div class="control-group">
     <label class="control-label" for="name">Name</label>

@@ -56,25 +56,26 @@ function CategoryCtrl($scope, $http, $location) {
 }
 CategoryCtrl.$inject = ['$scope', '$http', '$location'];
 
-function CategoryEditCtrl($scope, $http, $routeParams) {
+function CategoryEditCtrl($scope, $http, $routeParams, alertService) {
   var category = null;
   $http.get('/Expense/category/' + $routeParams.id).success(function(data) {
     category = $scope.category = data;
   });
   
-  $scope.message = "";
-  $scope.messageType = "";
+  $scope.alerts = alertService.getAlerts();
   
   $scope.editCategory = function() {
     $http.put('/Expense/category', category).success(function() {
-      $scope.message = "Save successful";
-      $scope.messageType = "Success!";
+      var alert = {
+        type: 'success',
+        msg: 'Save successful'
+      }
+      alertService.add(alert);
     });
-  }
+  };
   
-  $scope.closeMessage = function() {
-    $scope.message = "";
-    $scope.messageType = "";
+  $scope.closeAlert = function(index) {
+    alertService.close(index);
   }
 }
-CategoryEditCtrl.$inject = ['$scope', '$http', '$routeParams'];
+CategoryEditCtrl.$inject = ['$scope', '$http', '$routeParams', 'alertService'];
