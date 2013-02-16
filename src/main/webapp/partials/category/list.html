@@ -10,33 +10,25 @@
     <button type="submit" class="btn">Save</button>
   </form>
   <table class="table table-striped table-hover">
+    <caption>Existing Categories</caption>
     <thead>
       <tr>
-        <th>ID</th>
+        <th>#</th>
         <th>Name</th>
         <th>Type</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="category in categories">
+      <tr ng-repeat="category in categories" ng-click="editUrl(category.id)">
         <td>{{category.id}}</td>
-        <td ng-dblclick="editCategory(category)" ng-class="{editing: category == editedCategory}">
+        <td>
           <div class="view">{{category.name}}</div>
-          <form class="edit" ng-submit="doneEditing(category)">
-            <input ng-model="category.name">
-          </form>
         </td>
         <td>
           <div class="view">{{category.categoryType}}</div>
         </td>
         <td>
-          <span ng-class="{editing: category == editedCategory}">
-            <span class="edit">
-              <button type="button" class="btn btn-mini btn-success" ng-click=doneEditing(category)>Save</button>
-              <button type="button" class="btn btn-mini btn-danger" ng-click=cancelEditing(category)>Cancel</button>
-            </span>
-          </span>
           <button type="button" class="close" ng-click="deleteCategory(category)">&times;</button>
         </td>
       </tr>
