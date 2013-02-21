@@ -8,11 +8,14 @@ var expenseApp = angular.module('expenseApp', []).
     $routeProvider.otherwise({redirectTo: '/'});
   }]);
 
-expenseApp.factory('alertService', function() {
+expenseApp.factory('alertService', function($timeout) {
   var alerts = [];
   var alertService = {
     add: function(alert) {
       alerts.push(alert);
+      $timeout(function() {
+        alerts.splice(alerts.indexOf(alert), 1);
+      }, 2000);
     },
     
     close: function(index) {
@@ -21,6 +24,10 @@ expenseApp.factory('alertService', function() {
     
     getAlerts: function() {
       return alerts;
+    },
+    
+    clear: function() {
+      alerts = [];
     }
   };
  

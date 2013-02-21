@@ -1,4 +1,5 @@
 <div ng-controller="CategoryCtrl">
+  <div ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" alert>{{alert.msg}}</div>
   <form ng-submit="addCategory()">
     <fieldset>
       <legend>New Category</legend>
@@ -20,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="category in categories" ng-click="editUrl(category.id)">
+      <tr class="categoryRow" ng-repeat="category in categories" ng-click="editUrl(category.id)">
         <td>{{category.id}}</td>
         <td>
           <div class="view">{{category.name}}</div>
@@ -29,7 +30,7 @@
           <div class="view">{{category.categoryType}}</div>
         </td>
         <td>
-          <button type="button" class="close" ng-click="deleteCategory(category)">&times;</button>
+          <button type="button" class="close" ng-click="deleteCategory($event, category)">&times;</button>
         </td>
       </tr>
     </tbody>
