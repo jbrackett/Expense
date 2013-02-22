@@ -5,7 +5,7 @@
       <legend>New Category</legend>
       <input type="text" ng-model="newCategory.name" placeholder="Category name" autofocus>
       <select ng-model="newCategory.categoryType">
-        <option ng-repeat="type in types">{{type}}</option>
+        <option ng-repeat="type in types" value="{{type}}">{{type | capitalize}}</option>
       </select>
     </fieldset>
     <div class="form-actions">
@@ -29,7 +29,7 @@
           <div class="view">{{category.name}}</div>
         </td>
         <td>
-          <div class="view">{{category.categoryType}}</div>
+          <div class="view">{{category.categoryType | capitalize}}</div>
         </td>
         <td>
           <button type="button" class="close" ng-click="deleteCategory($event, category)">&times;</button>
