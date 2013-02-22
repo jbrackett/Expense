@@ -3,9 +3,10 @@
 // Declare app level module
 var expenseApp = angular.module('expenseApp', []).
   config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/home', {templateUrl: 'partials/home.html'});
     $routeProvider.when('/categories', {templateUrl: 'partials/category/list.html', controller: CategoryCtrl});
     $routeProvider.when('/category/edit/:id', {templateUrl: 'partials/category/edit.html', controller: CategoryEditCtrl});
-    $routeProvider.otherwise({redirectTo: '/'});
+    $routeProvider.otherwise({redirectTo: '/home'});
   }]);
 
 expenseApp.factory('alertService', function($timeout) {

@@ -52,4 +52,9 @@ public class MaximumAmountPolicyRule extends PolicyRule<BigDecimal> {
         .getMoney().getAmount(), ruleValue);
   }
 
+  @Override
+  public String getDescription() {
+    return "Makes expenses out of policy when their amount is greater than #1";
+  }
+
 }

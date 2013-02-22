@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
     <script src="/Expense/js/bootstrap.min.js"></script>
     <script src="/Expense/js/app.js"></script>
     <script src="/Expense/js/controllers/category.js"></script>
@@ -15,11 +15,15 @@
   </head>
   <body>
   
-    <h2>Welcome to Expense</h2>
-
-    <ul class="menu">
-      <li><a href="#/categories">View Categories</a></li>
-    </ul>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#/home">Expense</a>
+        <ul class="nav">
+          <li><a href="#/home">Home</a></li>
+          <li><a href="#/categories">Categories</a></li>
+        </ul>
+      </div>
+    </div>
   
     <div class="container">
       <div ng-view></div>

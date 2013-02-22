@@ -97,6 +97,8 @@ public abstract class PolicyRule<T> {
 
   public abstract String getInvalidMessage(Expense expense);
 
+  public abstract String getDescription();
+
   @Override
   public String toString() {
     return "PolicyRule [id=" + id + ", name=" + name + ", ruleValue="
