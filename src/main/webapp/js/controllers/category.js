@@ -34,6 +34,17 @@ function CategoryCtrl($scope, $http, $location, alertService) {
     $event.stopPropagation();
     $http.delete('/Expense/category/' + category.id).success(function() {
       categories.splice(categories.indexOf(category), 1);
+      var alert = {
+        type: 'success',
+        msg: 'Successfully deleted category ' + category.name
+      }
+      alertService.add(alert);
+    }).error(function() {
+      var alert = {
+        type: 'error',
+        msg: 'Unable to delete ' + category.name + ' at this time.'
+      }
+      alertService.add(alert);
     });
   }
   
