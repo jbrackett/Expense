@@ -17,6 +17,7 @@ import org.hibernate.envers.Audited;
 import org.joda.time.LocalDate;
 
 import com.expense.domain.constants.StopType;
+import com.expense.domain.policy.MaximumAmountPerNightPolicyRule;
 import com.expense.domain.policy.MaximumAmountPolicyRule;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -27,7 +28,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "name")
 @JsonTypeInfo(property = "name", use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
-@JsonSubTypes({ @JsonSubTypes.Type(name = MaximumAmountPolicyRule.POLICY_NAME, value = MaximumAmountPolicyRule.class) })
+@JsonSubTypes({
+    @JsonSubTypes.Type(name = MaximumAmountPolicyRule.POLICY_NAME, value = MaximumAmountPolicyRule.class),
+    @JsonSubTypes.Type(name = MaximumAmountPerNightPolicyRule.POLICY_NAME, value = MaximumAmountPerNightPolicyRule.class) })
 public abstract class PolicyRule<T> {
 
   @Id
@@ -42,6 +45,7 @@ public abstract class PolicyRule<T> {
   protected LocalDate endDate;
   @Enumerated(EnumType.STRING)
   protected StopType stopType;
+  protected boolean active;
   @Transient
   protected String description;
 
@@ -88,6 +92,14 @@ public abstract class PolicyRule<T> {
 
   public void setStopType(StopType stopType) {
     this.stopType = stopType;
+  }
+
+  public boolean isActive() {
+    return active;
+  }
+
+  public void setActive(boolean active) {
+    this.active = active;
   }
 
   public abstract String getName();

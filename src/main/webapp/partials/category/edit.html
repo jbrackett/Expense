@@ -17,10 +17,8 @@
   </fieldset>
   <fieldset>
     <legend>Available policies</legend>
-    <div id="availablePolicies" ng-repeat="policy in category.availablePolicyRules">
-      <label class="checkbox">
-        <input type="checkbox"><span ng-bind-html-unsafe="policy.description | policy"></span>
-      </label>
+    <div ng-repeat="policy in category.availablePolicyRules">
+      <div policy-check-box policy="policy" update="updatePolicy(policy)"></div>
     </div>
   </fieldset>
   <div class="form-actions">

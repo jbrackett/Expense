@@ -101,5 +101,16 @@ function CategoryEditCtrl($scope, $http, $routeParams, alertService) {
   $scope.closeAlert = function(index) {
     alertService.close(index);
   }
+  
+  $scope.updatePolicy = function(policy) {
+    if (policy.active) {
+      category.policyRules.push(policy);
+      console.log('Adding policy ' + policy.name);
+    }
+    else {
+      category.policyRules.splice(category.policyRules.indexOf(policy), 1);
+      console.log('Removing policy ' + policy.name);
+    }
+  }
 }
 CategoryEditCtrl.$inject = ['$scope', '$http', '$routeParams', 'alertService'];
