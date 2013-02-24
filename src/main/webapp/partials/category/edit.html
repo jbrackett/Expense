@@ -11,8 +11,16 @@
     <div class="control-group">
       <label class="control-label" for="type">Type</label>
       <div class="type controls">
-        <input type="text" value="{{category.categoryType | capitalize}}" disabled/>
+        <input type="text" value="{{category.categoryType | capitalize}}" disabled>
       </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Available policies</legend>
+    <div id="availablePolicies" ng-repeat="policy in category.availablePolicyRules">
+      <label class="checkbox">
+        <input type="checkbox"><span ng-bind-html-unsafe="policy.description | policy"></span>
+      </label>
     </div>
   </fieldset>
   <div class="form-actions">

@@ -63,6 +63,11 @@ public class Money implements Comparable<Money> {
     return result;
   }
 
+  public Money divide(int divisor) {
+    BigDecimal amt = amount.divide(new BigDecimal(divisor));
+    return new Money(amt, currency);
+  }
+
   /**
    * Compares the amount of this Money to the given amount
    * 

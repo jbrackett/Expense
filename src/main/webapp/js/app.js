@@ -42,3 +42,11 @@ expenseApp.filter('capitalize', function() {
     }
   }
 });
+
+expenseApp.filter('policy', function() {
+  return function(description) {
+    if(description) {
+      return description.replace('%i', '<input type="text">');
+    }
+  }
+});

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
@@ -41,6 +42,8 @@ public abstract class PolicyRule<T> {
   protected LocalDate endDate;
   @Enumerated(EnumType.STRING)
   protected StopType stopType;
+  @Transient
+  protected String description;
 
   public PolicyRule() {
     startDate = LocalDate.now();

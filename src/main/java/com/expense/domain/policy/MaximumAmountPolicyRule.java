@@ -20,6 +20,7 @@ public class MaximumAmountPolicyRule extends PolicyRule<BigDecimal> {
   public MaximumAmountPolicyRule() {
     super();
     name = getName();
+    description = "Expense is out of policy when it's amount is greater than %i.";
   }
 
   @Override
@@ -48,13 +49,13 @@ public class MaximumAmountPolicyRule extends PolicyRule<BigDecimal> {
 
   @Override
   public String getInvalidMessage(Expense expense) {
-    return String.format("%s is greater than the allowed amount of %s", expense
-        .getMoney().getAmount(), ruleValue);
+    return String.format("%s is greater than the allowed amount of %s.",
+        expense.getMoney().getAmount(), ruleValue);
   }
 
   @Override
   public String getDescription() {
-    return "Makes expenses out of policy when their amount is greater than #1";
+    return description;
   }
 
 }
