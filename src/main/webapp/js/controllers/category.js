@@ -105,11 +105,11 @@ function CategoryEditCtrl($scope, $http, $routeParams, alertService) {
   $scope.updatePolicy = function(policy) {
     if (policy.active) {
       category.policyRules.push(policy);
-      console.log('Adding policy ' + policy.name + ' with value ' + policy.value);
+      console.log('Adding policy ' + policy.name + ' with value ' + policy.ruleValue);
     }
     else {
       category.policyRules.splice(category.policyRules.indexOf(policy), 1);
-      console.log('Removing policy ' + policy.name + ' with value ' + policy.value);
+      console.log('Removing policy ' + policy.name + ' with value ' + policy.ruleValue);
     }
   }
 }
