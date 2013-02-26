@@ -95,6 +95,12 @@ function CategoryEditCtrl($scope, $http, $routeParams, alertService) {
         msg: 'Successfully saved category ' + category.name
       }
       alertService.add(alert);
+    }).error(function() {
+      var alert = {
+        type: 'error',
+        msg: 'Unable to save category ' + category.name + ' at this time.'
+      }
+      alertService.add(alert);
     });
   };
   
