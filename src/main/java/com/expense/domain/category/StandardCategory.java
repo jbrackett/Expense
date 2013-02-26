@@ -27,7 +27,7 @@ public class StandardCategory extends Category {
   }
 
   @Override
-  public List<PolicyRule<?>> getAvailablePolicyRules() {
+  public List<PolicyRule<?>> getReleventPolicyRules() {
     return StandardCategory.STANDARD_RULES;
   }
 

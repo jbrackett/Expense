@@ -15,7 +15,13 @@
       </div>
     </div>
   </fieldset>
-  <fieldset>
+  <fieldset ng-show="category.policyRules.length !== 0">
+    <legend>Applied policies</legend>
+    <div ng-repeat="policy in category.policyRules">
+      <div policy-check-box policy="policy" update="updatePolicy(policy)"></div>
+    </div>
+  </fieldset>
+  <fieldset ng-show="category.availablePolicyRules.length !== 0">
     <legend>Available policies</legend>
     <div ng-repeat="policy in category.availablePolicyRules">
       <div policy-check-box policy="policy" update="updatePolicy(policy)"></div>

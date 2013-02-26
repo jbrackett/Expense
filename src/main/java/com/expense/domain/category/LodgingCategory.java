@@ -21,7 +21,7 @@ public class LodgingCategory extends Category {
   }
 
   @Override
-  public List<PolicyRule<?>> getAvailablePolicyRules() {
+  public List<PolicyRule<?>> getReleventPolicyRules() {
     List<PolicyRule<?>> rules = new ArrayList<>();
 
     rules.add(new MaximumAmountPerNightPolicyRule());

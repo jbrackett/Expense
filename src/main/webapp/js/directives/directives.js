@@ -14,7 +14,6 @@ expenseApp.directive('alert', function () {
 expenseApp.directive('policyCheckBox', function($compile) {
   return {
     restrict: 'EA',
-    //templateUrl:'partials/templates/policyCheckBox.html',
     replace: true,
     scope: {
       policy: '=',

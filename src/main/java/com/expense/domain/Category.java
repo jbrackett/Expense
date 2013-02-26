@@ -111,7 +111,29 @@ public abstract class Category {
     return messageMap.asMap();
   }
 
-  public abstract List<PolicyRule<?>> getAvailablePolicyRules();
+  public List<PolicyRule<?>> getAvailablePolicyRules() {
+    if (policyRules.isEmpty()) {
+      return getReleventPolicyRules();
+    }
+    else {
+      List<PolicyRule<?>> available = new ArrayList<>();
+      for (PolicyRule<?> relevent : getReleventPolicyRules()) {
+        boolean include = true;
+        for (PolicyRule<?> added : getPolicyRules()) {
+          if (added.getName().equals(relevent.getName())) {
+            include = false;
+            break;
+          }
+        }
+        if (include) {
+          available.add(relevent);
+        }
+      }
+      return available;
+    }
+  }
+
+  public abstract List<PolicyRule<?>> getReleventPolicyRules();
 
   @Override
   public String toString() {
