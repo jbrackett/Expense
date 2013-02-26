@@ -1,4 +1,4 @@
-<div ng-controller="CategoryCtrl">
+<div>
   <div ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" alert>{{alert.msg}}</div>
   <form ng-submit="addCategory()">
     <fieldset>

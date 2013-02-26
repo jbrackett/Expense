@@ -2,21 +2,22 @@
 
 /* Controllers */
 
-function CategoryCtrl($scope, $http, $location, alertService) {
+function CategoryCtrl($scope, $http, $location, AlertService, CategoryService) {
   var categories = [];
   var types = [];
-  $http.get('/Expense/category').success(function(data) {
+  
+  CategoryService.findAll().then(function(data) {
     categories = $scope.categories = data;
   });
-  $http.get('/Expense/category/types').success(function(data) {
-    types = $scope.types = data;
+  
+  CategoryService.getTypes().then(function(data) {
+   types = $scope.types = data;
   });
   
-  $scope.alerts = alertService.getAlerts();
+  $scope.alerts = AlertService.getAlerts();
 
- 
   $scope.closeAlert = function(index) {
-    alertService.close(index);
+    AlertService.close(index);
   }
   
   $scope.editUrl = function(id) {
@@ -38,13 +39,13 @@ function CategoryCtrl($scope, $http, $location, alertService) {
         type: 'success',
         msg: 'Successfully deleted category ' + category.name
       }
-      alertService.add(alert);
+      AlertService.add(alert);
     }).error(function() {
       var alert = {
         type: 'error',
         msg: 'Unable to delete ' + category.name + ' at this time.'
       }
-      alertService.add(alert);
+      AlertService.add(alert);
     });
   }
   
@@ -60,52 +61,35 @@ function CategoryCtrl($scope, $http, $location, alertService) {
       policyRules: $scope.newCategory.policyRules
     }
    
-    $http.post('/Expense/category', category).success(function(id) {
-      category.id = id;
-      categories.push(category);
-      var alert = {
-        type: 'success',
-        msg: 'Successfully created category ' + category.name
-      }
-      alertService.add(alert);
+    CategoryService.save(category).then(function(data) {
+      $scope.categories.push(data);
+      
+      $scope.newCategory = {
+        id: null,
+        name: '',
+        categoryType: 'STANDARD',
+        policyRules: []
+      };
     });
-
-    $scope.newCategory = {
-      id: null,
-      name: '',
-      categoryType: 'STANDARD',
-      policyRules: []
-    };
+    
   };
 }
-CategoryCtrl.$inject = ['$scope', '$http', '$location', 'alertService'];
+CategoryCtrl.$inject = ['$scope', '$http', '$location', 'AlertService', 'CategoryService'];
 
-function CategoryEditCtrl($scope, $http, $routeParams, alertService) {
+function CategoryEditCtrl($scope, $http, $routeParams, AlertService, CategoryService) {
   var category = null;
-  $http.get('/Expense/category/' + $routeParams.id).success(function(data) {
+  CategoryService.findOne($routeParams.id).then(function(data) {
     category = $scope.category = data;
   });
   
-  $scope.alerts = alertService.getAlerts();
+  $scope.alerts = AlertService.getAlerts();
   
   $scope.editCategory = function() {
-    $http.put('/Expense/category', category).success(function() {
-      var alert = {
-        type: 'success',
-        msg: 'Successfully saved category ' + category.name
-      }
-      alertService.add(alert);
-    }).error(function() {
-      var alert = {
-        type: 'error',
-        msg: 'Unable to save category ' + category.name + ' at this time.'
-      }
-      alertService.add(alert);
-    });
+    CategoryService.save(category);
   };
   
   $scope.closeAlert = function(index) {
-    alertService.close(index);
+    AlertService.close(index);
   }
   
   $scope.updatePolicy = function(policy) {
@@ -119,4 +103,4 @@ function CategoryEditCtrl($scope, $http, $routeParams, alertService) {
     }  
   }
 }
-CategoryEditCtrl.$inject = ['$scope', '$http', '$routeParams', 'alertService'];
+CategoryEditCtrl.$inject = ['$scope', '$http', '$routeParams', 'AlertService', 'CategoryService'];
