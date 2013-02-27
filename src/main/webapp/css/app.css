@@ -23,6 +23,6 @@
 	display:none;
 }
 
-.categoryRow {
+.clickableRow {
 	cursor: pointer;
 }

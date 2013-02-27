@@ -35,6 +35,12 @@ public class CategoryController {
     return categoryRepository.findAll();
   }
 
+  @RequestMapping(value = "/count", method = RequestMethod.GET)
+  @ResponseBody
+  public long count() {
+    return categoryRepository.count();
+  }
+
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   @ResponseBody
   public Category getCategory(@PathVariable("id") Long id) {

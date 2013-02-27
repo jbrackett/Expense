@@ -1,0 +1,9 @@
+<div ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" alert>{{alert.msg}}</div>
+<form class="form-horizontal" ng-submit="editExpense()">
+  <div class="control-group">
+    <label class="control-label" for="name">Category</label>
+    <div class="controls">
+      <div category-select categories="categories"></div>
+    </div>
+  </div>  
+</form>

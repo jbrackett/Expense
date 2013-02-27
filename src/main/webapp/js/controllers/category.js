@@ -1,8 +1,6 @@
 'use strict';
 
-/* Controllers */
-
-function CategoryCtrl($scope, $http, $location, AlertService, CategoryService) {
+function CategoryCtrl($scope, $location, AlertService, CategoryService) {
   var categories = [];
   var types = [];
   
@@ -65,9 +63,9 @@ function CategoryCtrl($scope, $http, $location, AlertService, CategoryService) {
     
   };
 }
-CategoryCtrl.$inject = ['$scope', '$http', '$location', 'AlertService', 'CategoryService'];
+CategoryCtrl.$inject = ['$scope', '$location', 'AlertService', 'CategoryService'];
 
-function CategoryEditCtrl($scope, $http, $routeParams, AlertService, CategoryService) {
+function CategoryEditCtrl($scope, $routeParams, AlertService, CategoryService) {
   var category = null;
   CategoryService.findOne($routeParams.id).then(function(data) {
     category = $scope.category = data;
@@ -94,4 +92,4 @@ function CategoryEditCtrl($scope, $http, $routeParams, AlertService, CategorySer
     }  
   }
 }
-CategoryEditCtrl.$inject = ['$scope', '$http', '$routeParams', 'AlertService', 'CategoryService'];
+CategoryEditCtrl.$inject = ['$scope', '$routeParams', 'AlertService', 'CategoryService'];
