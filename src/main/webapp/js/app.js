@@ -84,6 +84,24 @@ expenseApp.factory('CategoryService', function($http, AlertService) {
       }
     },
     
+    delete: function(category) {
+      return $http.delete('/Expense/category/' + category.id).then(function() {
+        var alert = {
+          type: 'success',
+          msg: 'Successfully deleted category ' + category.name
+        }
+        AlertService.add(alert);
+        return true;
+      }, function() {
+        var alert = {
+          type: 'error',
+          msg: 'Unable to delete ' + category.name + ' at this time.'
+        }
+        AlertService.add(alert);
+        return false;
+      });
+    },
+    
     getTypes: function() {
       return $http.get('/Expense/category/types').then(function(response) {
         return response.data;
