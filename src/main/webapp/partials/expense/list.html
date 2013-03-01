@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="expense in expenses | filter:search | orderBy:'name'">
+    <tr class="clickableRow" ng-repeat="expense in expenses | filter:search | orderBy:'name'" ng-click="editUrl(expense.id)">
       <td>{{expense.id}}</td>
       <td>{{expense.name}}</td>
       <td>{{expense.category.name}}</td>

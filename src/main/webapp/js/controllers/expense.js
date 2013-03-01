@@ -1,6 +1,6 @@
 'use strict';
 
-function ExpenseCtrl($scope, AlertService, CategoryService, ExpenseService) {
+function ExpenseCtrl($scope, $location, AlertService, CategoryService, ExpenseService) {
   var expenses = [];
   $scope.categoryCount = 0;
   
@@ -18,6 +18,10 @@ function ExpenseCtrl($scope, AlertService, CategoryService, ExpenseService) {
     AlertService.close(index);
   }
   
+  $scope.editUrl = function(id) {
+    $location.path('/expense/' + id);
+  } 
+  
   $scope.deleteExpense = function($event, expense) {
     $event.stopPropagation();
     ExpenseService.delete(expense).then(function(success) {
@@ -28,7 +32,7 @@ function ExpenseCtrl($scope, AlertService, CategoryService, ExpenseService) {
   }
 
 }
-ExpenseEditCtrl.$inject = ['$scope', 'AlertService', 'CategoryService', 'ExpenseService'];
+ExpenseEditCtrl.$inject = ['$scope', '$location', 'AlertService', 'CategoryService', 'ExpenseService'];
 
 function ExpenseNewCtrl($scope, AlertService, CategoryService, ExpenseService) {
   var expense = null;
@@ -48,12 +52,13 @@ function ExpenseNewCtrl($scope, AlertService, CategoryService, ExpenseService) {
   }
   
   $scope.editExpense = function() {
-    ExpenseService.save(category);
+    ExpenseService.save(expense);
   };
   
   $scope.closeAlert = function(index) {
     AlertService.close(index);
   }
+  
 }
 ExpenseNewCtrl.$inject = ['$scope', 'AlertService', 'CategoryService', 'ExpenseService'];
 
@@ -76,10 +81,11 @@ function ExpenseEditCtrl($scope, $routeParams, AlertService, CategoryService, Ex
   
   $scope.editExpense = function() {
     ExpenseService.save(category);
-  };
+  }
   
   $scope.closeAlert = function(index) {
     AlertService.close(index);
   }
+
 }
 ExpenseEditCtrl.$inject = ['$scope', '$routeParams', 'AlertService', 'CategoryService', 'ExpenseService'];

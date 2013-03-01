@@ -30,14 +30,3 @@ expenseApp.directive('policyCheckBox', function($compile) {
   }
 });
 
-expenseApp.directive('categorySelect', function() {
-  return {
-    restrict: 'EA',
-    templateUrl:'partials/templates/categorySelect.html',
-    replace: true,
-    scope: {
-      categories: '='
-    }
-  }
-});
-
