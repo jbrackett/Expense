@@ -24,6 +24,18 @@ expenseApp.factory('AlertService', function($timeout) {
   return alertService;
 });
 
+expenseApp.factory('CurrencyService', function($http) {
+ var currencyService = {
+   findAll: function(alert) {
+     return $http.get("/Expense/currency").then(function(response) {
+       return response.data;
+     });
+   }
+ };
+
+ return currencyService;
+});
+
 expenseApp.factory('CategoryService', function($http, AlertService) {
   var categoryService = {
     findAll: function() {

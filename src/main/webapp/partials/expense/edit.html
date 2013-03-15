@@ -15,6 +15,16 @@
       <input type="text" ng-model="expense.name">
     </div>
   </div>
+  <div class="control-group">
+    <label class="control-label" for="name">Amount</label>
+    <div class="controls">
+      <input type="text" ng-model="expense.money.amount">
+      <select ng-model="expense.money.currency">
+        <option></option>
+        <option ng-repeat="currency in currencies" value="{{currency}}">{{currency}}</option>
+      </select>
+    </div>
+  </div>
   <div class="form-actions">
     <button type="submit" class="btn btn-primary">Save</button>
     <a href="#/expenses" class="btn">Back</a>

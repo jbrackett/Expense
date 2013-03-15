@@ -13,6 +13,7 @@
       <th>#</th>
       <th>Name</th>
       <th>Category</th>
+      <th>Amount</th>
       <th><input type="text" class="search-query pull-right" placeholder="Search" ng-model="search.$"></th>
     </tr>
   </thead>
@@ -21,6 +22,7 @@
       <td>{{expense.id}}</td>
       <td>{{expense.name}}</td>
       <td>{{expense.category.name}}</td>
+      <td>{{expense.money.amount}} {{expense.money.currency}}</td>
       <td>
         <button type="button" class="close" ng-click="deleteExpense($event, expense)">&times;</button>
       </td>

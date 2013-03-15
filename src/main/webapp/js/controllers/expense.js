@@ -34,15 +34,21 @@ function ExpenseCtrl($scope, $location, AlertService, CategoryService, ExpenseSe
 }
 ExpenseEditCtrl.$inject = ['$scope', '$location', 'AlertService', 'CategoryService', 'ExpenseService'];
 
-function ExpenseNewCtrl($scope, AlertService, CategoryService, ExpenseService) {
+function ExpenseNewCtrl($scope, AlertService, CategoryService, ExpenseService, CurrencyService) {
   var expense = null;
   var categories = [];
+  var currencies = []
+  
   ExpenseService.getNew().then(function(data) {
     expense = $scope.expense = data;
   });
   
   CategoryService.findAll().then(function(data) {
     categories = $scope.categories = data;
+  });
+  
+  CurrencyService.findAll().then(function(data) {
+    currencies = $scope.currencies = data;
   });
   
   $scope.alerts = AlertService.getAlerts();
@@ -60,17 +66,23 @@ function ExpenseNewCtrl($scope, AlertService, CategoryService, ExpenseService) {
   }
   
 }
-ExpenseNewCtrl.$inject = ['$scope', 'AlertService', 'CategoryService', 'ExpenseService'];
+ExpenseNewCtrl.$inject = ['$scope', 'AlertService', 'CategoryService', 'ExpenseService', 'CurrencyService'];
 
-function ExpenseEditCtrl($scope, $routeParams, AlertService, CategoryService, ExpenseService) {
+function ExpenseEditCtrl($scope, $routeParams, AlertService, CategoryService, ExpenseService, CurrencyService) {
   var expense = null;
   var categories = [];
+  var currencies = []
+
   ExpenseService.findOne($routeParams.id).then(function(data) {
     expense = $scope.expense = data;
   });
   
   CategoryService.findAll().then(function(data) {
     categories = $scope.categories = data;
+  });
+  
+  CurrencyService.findAll().then(function(data) {
+    currencies = $scope.currencies = data;
   });
   
   $scope.alerts = AlertService.getAlerts();
@@ -88,4 +100,4 @@ function ExpenseEditCtrl($scope, $routeParams, AlertService, CategoryService, Ex
   }
 
 }
-ExpenseEditCtrl.$inject = ['$scope', '$routeParams', 'AlertService', 'CategoryService', 'ExpenseService'];
+ExpenseEditCtrl.$inject = ['$scope', '$routeParams', 'AlertService', 'CategoryService', 'ExpenseService', 'CurrencyService'];
