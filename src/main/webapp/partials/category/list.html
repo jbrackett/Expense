@@ -22,6 +22,7 @@
         <th>#</th>
         <th>Name</th>
         <th>Type</th>
+        <th>Policies</th>
         <th><input type="text" class="search-query pull-right" placeholder="Search" ng-model="search.$"></th>
       </tr>
     </thead>
@@ -33,6 +34,11 @@
         </td>
         <td>
           <div class="view">{{category.categoryType | capitalize}}</div>
+        </td>
+        <td>
+          <ul ng-repeat="policy in category.policyRules">
+            <li>{{policy.description | policy:policy.ruleValue}}</li>
+          </ul>
         </td>
         <td>
           <button type="button" class="close" ng-click="deleteCategory($event, category)">&times;</button>
