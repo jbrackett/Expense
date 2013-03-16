@@ -10,8 +10,8 @@ repositories {
 }
 
 ext {
-  loggingVersion="1.0.9"
-  slf4jVersion="1.7.2"
+  loggingVersion="1.0.10"
+  slf4jVersion="1.7.3"
 
   hibernateVersion="4.1.9.Final"
   springVersion="3.2.1.RELEASE"
@@ -20,7 +20,7 @@ ext {
   jaxbVersion="2.2.7"
   servletVersion="3.0.1"
 
-  tomcatVersion="7.0.35"
+  tomcatVersion="7.0.37"
 }
 
 buildscript {
