@@ -38,7 +38,7 @@ function CategoryCtrl($scope, $location, AlertService, CategoryService) {
     });
   }
   
-  $scope.addCategory = function() {
+  $scope.addCategory = function($event) {
     if (!$scope.newCategory.name.length) {
       return;
     }

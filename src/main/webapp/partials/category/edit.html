@@ -23,7 +23,7 @@
   </fieldset>
   <fieldset ng-show="category.availablePolicyRules.length !== 0">
     <legend>Available policies</legend>
-    <div ng-repeat="policy in category.availablePolicyRules">
+    <div ng-repeat="policy in category.availablePolicyRules" ng-animate="{enter: 'animate-enter'}">
       <div policy-check-box policy="policy" update="updatePolicy(policy)"></div>
     </div>
   </fieldset>

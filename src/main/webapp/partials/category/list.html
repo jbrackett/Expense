@@ -1,5 +1,5 @@
 <div>
-  <div ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" alert>{{alert.msg}}</div>
+  <div ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" alert ng-animate="{enter: 'alert-enter', leave: 'alert-leave'}">{{alert.msg}}</div>
   <form ng-submit="addCategory()">
     <fieldset>
       <legend>New Category</legend>
@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="clickableRow" ng-repeat="category in categories | filter:search | orderBy:'name'" ng-click="editUrl(category.id)">
+      <tr class="clickableRow" ng-repeat="category in categories | filter:search | orderBy:'name'" ng-click="editUrl(category.id)" ng-animate="{enter: 'category-enter', leave: 'category-leave'}">
         <td>{{category.id}}</td>
         <td>
           <div class="view">{{category.name}}</div>

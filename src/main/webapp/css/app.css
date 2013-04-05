@@ -20,9 +20,61 @@
 }
 
 .hidden {
-	display:none;
+	display: none;
 }
 
 .clickableRow {
 	cursor: pointer;
+}
+
+.category-enter-setup {
+	-webkit-transition: .5s linear all;
+	-moz-transition: .5s linear all;
+	-ms-transition: .5s linear all;
+	-o-transition: .5s linear all;
+	transition: .5s linear all;
+	opacity: 0;
+}
+
+.category-leave-setup {
+	-webkit-transition: .5s linear all;
+	-moz-transition: .5s linear all;
+	-ms-transition: .5s linear all;
+	-o-transition: .5s linear all;
+	transition: .5s linear all;
+	opacity: 1;
+}
+
+.category-enter-setup.category-enter-start {
+	opacity: 1;
+}
+
+.category-leave-setup.category-leave-start {
+	opacity: 0;
+}
+
+.alert-enter-setup {
+	-webkit-transition: .5s linear all;
+	-moz-transition: .5s linear all;
+	-ms-transition: .5s linear all;
+	-o-transition: .5s linear all;
+	transition: .5s linear all;
+	opacity: 0;
+}
+
+.alert-leave-setup {
+	-webkit-transition: .5s linear all;
+	-moz-transition: .5s linear all;
+	-ms-transition: .5s linear all;
+	-o-transition: .5s linear all;
+	transition: .5s linear all;
+	opacity: 1;
+}
+
+.alert-enter-setup.alert-enter-start {
+	opacity: 1;
+}
+
+.alert-leave-setup.alert-leave-start {
+	opacity: 0;
 }
