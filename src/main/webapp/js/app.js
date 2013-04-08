@@ -9,6 +9,7 @@ var expenseApp = angular.module('expenseApp', []).
     $routeProvider.when('/expenses', {templateUrl: 'partials/expense/list.html', controller: ExpenseCtrl});
     $routeProvider.when('/expense/new', {templateUrl: 'partials/expense/edit.html', controller: ExpenseNewCtrl});
     $routeProvider.when('/expense/:id', {templateUrl: 'partials/expense/edit.html', controller: ExpenseEditCtrl});
+    $routeProvider.when('/receipts', {templateUrl: 'partials/receipt/list.html', controller: ReceiptCtrl});
     $routeProvider.otherwise({redirectTo: '/home'});
   }]);
 
