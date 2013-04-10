@@ -40,8 +40,12 @@ expenseApp.directive('receipt', function ($compile) {
    },
    compile: function postLink(element, attrs) {
      return function(scope, element, attrs) {
+       scope.enlarged = false;
        var canvas = element.find('canvas')[0];
        var ctx = canvas.getContext('2d');
+       
+       var smallSize = 200;
+       var largeSize = 600;
        
        var animSpeed = 16;
       
@@ -81,6 +85,30 @@ expenseApp.directive('receipt', function ($compile) {
            clearInterval(drawInterval);
          }
          drawInterval = setInterval(draw, animSpeed);
+       }
+       
+       scope.enlargeImage = function(event) {
+         event.preventDefault();
+         scope.enlarged = true;
+
+         ctx.clearRect(0, 0, width, height);
+         canvas.width = width = largeSize;
+         canvas.height = height = largeSize;
+         ctx.drawImage(img, 0, 0, width, height);
+       }
+       
+       scope.shrinkImage = function(event) {
+        event.preventDefault();
+        scope.enlarged = false;
+        
+        ctx.clearRect(0, 0, width, height);
+        canvas.width = width = smallSize;
+        canvas.height = height = smallSize;
+        ctx.drawImage(img, 0, 0, width, height);
+      }
+       
+       scope.downloadImage = function(event) {
+         event.preventDefault();
        }
      }
    }

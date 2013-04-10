@@ -1,4 +1,14 @@
 <div>
-  <canvas class="image-canvas" width="200" height="200"></canvas>
-  <a href="#" ng-click="rotateImage($event)">rotate</a>
+  <div ng-class="{'receipt-overlay': enlarged}"></div>
+  <ul class="thumbnails">
+    <li ng-class="{'receipt-modal-open': enlarged}">
+      <ul class="nav nav-pills receipt-controls">
+        <li><a class="btn btn-small" title="rotate" href="#" ng-click="rotateImage($event)"><i class="icon-repeat"></i></a></li>
+        <li ng-show="!enlarged"><a class="btn btn-small" title="enlarge" href="#" ng-click="enlargeImage($event)"><i class="icon-resize-full"></i></a></li>
+        <li><a class="btn btn-small" title="download" href="#" ng-click="downloadImage($event)"><i class="icon-download-alt"></i></a></li>
+        <li ng-show="enlarged" class="pull-right"><a class="close" title="close" href="#" ng-click="shrinkImage($event)">&times;</a></li>
+      </ul>
+      <canvas class="image-canvas" width="200" height="200"></canvas>
+    </li>
+  </ul>
 </div>

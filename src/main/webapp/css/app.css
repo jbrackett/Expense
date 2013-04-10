@@ -78,3 +78,30 @@
 .alert-leave-setup.alert-leave-start {
 	opacity: 0;
 }
+
+.receipt-controls {
+	background-color: #fff;
+	margin-bottom: 3px !important;
+}
+
+.receipt-modal-open {	
+	border: 2px solid #fff;
+	left: 50%;
+	margin-left: -300px !important;
+  position: absolute;
+  top: 30px;
+  transition: .3s linear all;
+  width: 600px;
+	z-index: 1000;
+}
+
+.receipt-overlay {
+  background-color: black;
+  left: 0%;
+  height: 100%;
+  position: fixed;
+  opacity: .70;
+  top: 0%;
+  width: 100%;
+  z-index: 900; 
+}
