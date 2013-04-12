@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import com.expense.domain.Category;
 import com.expense.domain.PolicyRule;
 import com.expense.domain.constants.CategoryType;
+import com.expense.domain.policy.StandardRules;
 
 @Entity
 @DiscriminatorValue(CategoryType.CAR)
@@ -20,7 +21,7 @@ public class CarCategory extends Category {
 
   @Override
   public List<PolicyRule<?>> getReleventPolicyRules() {
-    return StandardCategory.STANDARD_RULES;
+    return StandardRules.INSTANCE.getStandardRules();
   }
 
 }

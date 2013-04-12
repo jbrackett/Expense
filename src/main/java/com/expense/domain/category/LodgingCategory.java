@@ -1,6 +1,7 @@
 package com.expense.domain.category;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -10,6 +11,7 @@ import com.expense.domain.Category;
 import com.expense.domain.PolicyRule;
 import com.expense.domain.constants.CategoryType;
 import com.expense.domain.policy.MaximumAmountPerNightPolicyRule;
+import com.expense.domain.policy.StandardRules;
 
 @Entity
 @DiscriminatorValue(CategoryType.LODGING)
@@ -25,9 +27,9 @@ public class LodgingCategory extends Category {
     List<PolicyRule<?>> rules = new ArrayList<>();
 
     rules.add(new MaximumAmountPerNightPolicyRule());
-    rules.addAll(StandardCategory.STANDARD_RULES);
+    rules.addAll(StandardRules.INSTANCE.getStandardRules());
 
-    return rules;
+    return Collections.unmodifiableList(rules);
   }
 
 }

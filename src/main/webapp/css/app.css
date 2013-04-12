@@ -79,6 +79,10 @@
 	opacity: 0;
 }
 
+.image-canvas {
+	cursor: pointer;
+}
+
 .receipt-controls {
 	background-color: #fff;
 	margin-bottom: 3px !important;

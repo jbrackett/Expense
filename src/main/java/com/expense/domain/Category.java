@@ -2,6 +2,7 @@ package com.expense.domain;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ import com.expense.domain.category.StandardCategory;
 import com.expense.domain.category.TelecomCategory;
 import com.expense.domain.constants.CategoryType;
 import com.expense.domain.constants.StopType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -129,10 +131,11 @@ public abstract class Category {
           available.add(relevent);
         }
       }
-      return available;
+      return Collections.unmodifiableList(available);
     }
   }
 
+  @JsonIgnore
   public abstract List<PolicyRule<?>> getReleventPolicyRules();
 
   @Override
